@@ -1,0 +1,17 @@
+---
+# Customer B shows a second environment with a narrower public-only service.
+public-resources:
+  admin-portal:
+    name: Admin Portal
+    protocol: https
+    full-domain: admin.customer-b.example.com
+    auth:
+      sso-enabled: true
+      sso-roles:
+        - CustomerB-Admins
+        - Platform
+      sso-users: []
+    targets:
+      - hostname: websever
+        method: https
+        port: 443

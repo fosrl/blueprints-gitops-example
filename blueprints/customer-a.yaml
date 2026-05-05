@@ -1,0 +1,32 @@
+---
+# Customer A demonstrates a private SSH resource and a public web resource.
+private-resources:
+  ssh-resource:
+    name: SSH Server
+    mode: host
+    destination: localhost
+    site: customer-a
+    tcp-ports: "22"
+    disable-icmp: false
+    alias: ssh.customera.local
+    roles:
+      - Customer1
+      - DevOps
+    users:
+      - user@example.com
+
+public-resources:
+  secure-resource:
+    name: Web Resource
+    protocol: http
+    full-domain: secure-resource.example.com
+    auth:
+      sso-enabled: true
+      sso-roles:
+        - Member
+      sso-users:
+        - user@example.com
+    targets:
+      - hostname: localhost
+        method: http
+        port: 8080
