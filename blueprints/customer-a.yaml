@@ -5,30 +5,25 @@ private-resources:
     name: SSH Server
     mode: host
     destination: localhost
-    site: customer-a
+    site: average-yosemite-toad
     tcp-ports: "22"
     disable-icmp: false
     alias: ssh.customera.local
     roles:
-      - Customer1
-      - DevOps
-    users:
-      - user@example.com
-      - user2@example.com
+      - Member
 
 public-resources:
   secure-resource:
     name: Web Resource
     protocol: http
-    full-domain: secure-resource.example.com
+    full-domain: secure-resource.exampletunnel.io
     auth:
       sso-enabled: true
       sso-roles:
         - Member
-      sso-users:
-        - user@example.com
-        - user2@example.com
+      sso-users: []
     targets:
-      - hostname: localhost
+      - site: average-yosemite-toad
+        hostname: localhost
         method: http
         port: 8080
