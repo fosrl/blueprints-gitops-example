@@ -10,7 +10,7 @@ private-resources:
     disable-icmp: false
     alias: ssh.customera.local
     roles:
-      - Member
+      - IT
 
 public-resources:
   secure-resource:
