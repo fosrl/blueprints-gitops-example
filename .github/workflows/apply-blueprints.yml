@@ -27,11 +27,21 @@ jobs:
 
       - name: Apply Pangolin blueprints
         run: |
-          for blueprint in ./blueprints/*.yaml; do
-            echo "Applying ${blueprint}"
-            pangolin apply blueprint \
-              --api-key "$PANGOLIN_INTEGRATION_API_KEY" \
-              --endpoint "$PANGOLIN_ENDPOINT" \
-              --org "$PANGOLIN_ORG_ID" \
-              --file "$blueprint"
-          done
+          blueprint="./blueprints/customer-a.yaml"
+
+          echo "Applying ${blueprint}"
+          pangolin apply blueprint \
+            --api-key "$PANGOLIN_INTEGRATION_API_KEY" \
+            --endpoint "$PANGOLIN_ENDPOINT" \
+            --org "$PANGOLIN_ORG_ID" \
+            --file "$blueprint"
+
+          # To apply every blueprint in the directory instead, use:
+          # for blueprint in ./blueprints/*.yaml; do
+          #   echo "Applying ${blueprint}"
+          #   pangolin apply blueprint \
+          #     --api-key "$PANGOLIN_INTEGRATION_API_KEY" \
+          #     --endpoint "$PANGOLIN_ENDPOINT" \
+          #     --org "$PANGOLIN_ORG_ID" \
+          #     --file "$blueprint"
+          # done
