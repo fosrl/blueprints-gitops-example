@@ -11,6 +11,7 @@ private-resources:
     alias: ssh.customera.local
     roles:
       - IT
+      - Member
 
 public-resources:
   secure-resource:
